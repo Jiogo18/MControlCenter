@@ -178,7 +178,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->QtVersionValue->setText(QT_VERSION_STR);
     ui->versionValueLabel->setText(MControlCenter_VERSION);
     ui->autoAcDcProfilesGroupBox->setChecked(s.getValue("Settings/autoAcDcProfilesState").toBool());
-    ui->userModeOnBatteryComboBox->setCurrentIndex(s.getValue("Settings/UserModeOnBattery").toInt());
+    ui->userModeOnBatteryComboBox->setCurrentIndex(s.getValue("Settings/UserModeOnBattery", 3).toInt());
     ui->userModeOnChargerComboBox->setCurrentIndex(s.getValue("Settings/UserModeOnCharger").toInt());
     ui->autoPPDCheckBox->setChecked(s.getValue("Settings/autoPPDstate").toBool());
 }
