@@ -475,7 +475,7 @@ void Operate::setFanMode(int value) const {
 }
 
 void Operate::setFanModeAdvanced(bool enabled) const {
-    if (enabled && getUserMode() == user_mode::performance_mode)
+    if (enabled)
         helper.putValue(fanModeAddress, fanModeAdvanced);
     else
         helper.putValue(fanModeAddress, fanModeAuto);
