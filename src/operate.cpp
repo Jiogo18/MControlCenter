@@ -391,7 +391,11 @@ void Operate::setUserMode(user_mode userMode) const {
     fan_mode fanMode = fan_mode::auto_fan_mode;
     bool superBattery = false;
     QString userModeStr;
+
     Settings s;
+    if (s.getValue(settingsGroup + "fanModeAdvanced").toBool()) {
+        fanMode = fan_mode::advanced_fan_mode;
+    }
 
     switch (userMode) {
         case user_mode::balanced_mode:
@@ -400,9 +404,6 @@ void Operate::setUserMode(user_mode userMode) const {
         case user_mode::performance_mode:
             shiftMode = shift_mode::turbo_mode; // sport on some devices?
             userModeStr = "performance_mode";
-            if (s.getValue(settingsGroup + "fanModeAdvanced").toBool()) {
-                fanMode = fan_mode::advanced_fan_mode;
-            }
             break;
         case user_mode::silent_mode:
             fanMode = fan_mode::silent_fan_mode;
